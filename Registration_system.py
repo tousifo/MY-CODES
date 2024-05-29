@@ -1,17 +1,23 @@
-numbers = int(input())
+n = int(input())
 listu = []
-count = 1
-for _ in range(numbers):
+name_count = {}
+
+for _ in range(n):
     name = input()
     
-    if name in listu:
-        listu.append(name+str(count))
-        print(name+str(count))
+    if name in name_count:
+        count = name_count[name]
+        new_name = f"{name}{count}"
+        name_count[name] += 1
+    
+        while new_name in name_count:
+            count += 1
+            new_name = f"{name}{count}"
+        
+        name_count[new_name] = 1
+        listu.append(new_name)
+        print(new_name)
     else:
+        name_count[name] = 1
         listu.append(name)
-        print('OK')
-
-    
-    
-    
-    
+        print("OK")
