@@ -16,10 +16,13 @@ def ned_taxi(n, group):
     if rem_2:
         if count[1] > 2:
             taxis +=1
-            count[1] -=1
+            count[1] -=2
         else:
             taxis +=1
             count[1] = 0
+    if count[1] > 0:
+        taxis += (count[1] + 3)//4
+        
     return taxis
     
 n = int(input())
